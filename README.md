@@ -12,4 +12,4 @@ It contains:
 
 Please reach out to ron.nahshon@lemonade.com with any questions. Thank you!
 
-![alt text](https://www.insurancescored.com/wp-content/uploads/2018/08/lemonade1.png.png)
+![alt text](http://www.insurancescored.com/wp-content/uploads/2018/08/lemonade1.png)
