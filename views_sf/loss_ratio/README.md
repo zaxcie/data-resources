@@ -2,10 +2,6 @@
 
 Summary Doc: http://bit.ly/lr_data_architecture
 
-Links to Explores in Looker: 
+Link to Explore in Looker: 
 
-(1) https://lemonade.looker.com/explore/snowflake/loss_ratio_lae
-
-(2) https://lemonade.looker.com/explore/snowflake/loss_ratio_daily_earned_premium
-
-(3) https://lemonade.looker.com/explore/snowflake/loss_ratio_view
+https://bit.ly/loss_ratio_overtime
