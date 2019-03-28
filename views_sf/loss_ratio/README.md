@@ -8,4 +8,4 @@ Links to Explores in Looker:
 
 (2) https://lemonade.looker.com/explore/snowflake/loss_ratio_daily_earned_premium
 
-(3) https://lemonade.looker.com/explore/snowflake/loss_ratio_total
+(3) https://lemonade.looker.com/explore/snowflake/loss_ratio_view
