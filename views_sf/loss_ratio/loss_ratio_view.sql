@@ -23,7 +23,7 @@ COALESCE(l.loss_ibnr_est,0) AS loss_ibnr_est,
 COALESCE(l.expense_ibnr_est,0) AS expense_ibnr_est,
 COALESCE(l.total_ibnr_est,0) AS total_ibnr_est,
 l.claim_ids
-    FROM loss_ratio_daily_earned_premium AS e
-        FULL OUTER JOIN loss_ratio_lae AS l
+    FROM daily_earned_premium AS e
+        FULL OUTER JOIN daily_lae AS l
         ON (e.policy_id = l.policy_id 
         AND e.date = l.date);
