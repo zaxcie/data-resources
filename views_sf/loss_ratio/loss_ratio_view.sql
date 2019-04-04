@@ -22,7 +22,7 @@ COALESCE(l.subro_change_net,0) AS subro_change_net,
 COALESCE(l.loss_ibnr_est,0) AS loss_ibnr_est,
 COALESCE(l.expense_ibnr_est,0) AS expense_ibnr_est,
 COALESCE(l.total_ibnr_est,0) AS total_ibnr_est,
-l.claim_ids
+SPLIT_PART(l.claim_ids, ',', 1) AS claim_ids
     FROM daily_earned_premium AS e
         FULL OUTER JOIN daily_lae AS l
         ON (e.policy_id = l.policy_id 
