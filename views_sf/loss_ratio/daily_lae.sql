@@ -105,8 +105,10 @@ ibnr AS
           CASE WHEN d.date BETWEEN '2016-09-15' AND '2030-12-31' THEN 0.4 ELSE 0.4 END AS loss_ibnr,
           CASE WHEN d.date BETWEEN '2016-09-15' AND '2030-12-31' THEN 0.2 ELSE 0.2 END AS expense_ibnr
             FROM dates AS d
-        )
+        ),
 
+    loss_exp AS
+        (    
     SELECT
     pl.user_id,
     pl.policy_id,      
@@ -117,6 +119,30 @@ ibnr AS
         FROM loss_expense AS pl
             LEFT JOIN ibnr_est AS ie
             ON pl.date = ie.date
+        ),
+
+    exp_exp AS
+        (
+        SELECT 
+        r.user_id,
+        r.policy_id,
+        r.date,
+        r.reserves_loss * ie.loss_ibnr AS loss_ibnr_est,
+        r.reserves_expense * ie.expense_ibnr AS expense_ibnr_est,
+        loss_ibnr_est + expense_ibnr_est AS total_ibnr_est
+            FROM reserves AS r
+                LEFT JOIN ibnr_est AS ie
+                ON r.date = ie.date
+            ),
+
+    all_ibnr AS
+        (
+        SELECT * FROM loss_exp UNION ALL SELECT * FROM exp_exp
+        )           
+
+    SELECT user_id, policy_id, date, SUM(loss_ibnr_est) AS loss_ibnr_est, SUM(expense_ibnr_est) AS expense_ibnr_est, SUM(total_ibnr_est) AS total_ibnr_est
+        FROM all_ibnr
+        GROUP BY 1,2,3
     ),
     
 unique_date_policy AS
